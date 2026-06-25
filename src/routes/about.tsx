@@ -53,7 +53,7 @@ const ACTIVITIES = [
     body: "Sessions with alumni and visiting operators who've actually built profitable businesses, focused on the practical, not the inspirational.",
   },
   {
-    title: "Annual Summit",
+    title: "Annual Conference",
     body: "Our flagship gathering each November — keynotes, panels, and workshops on building real businesses under real constraints.",
   },
   {
@@ -68,7 +68,7 @@ const ACTIVITIES = [
 
 const STATS = [
   { value: "2025", label: "Founded" },
-  { value: "400+", label: "Summit attendees" },
+  { value: "400+", label: "Conference attendees" },
   { value: "6", label: "Programming tracks" },
   { value: "100%", label: "Student-run" },
 ];

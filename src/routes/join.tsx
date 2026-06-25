@@ -39,7 +39,7 @@ function Join() {
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-crimson" />
-                Invitations to club dinners, working sessions, and the annual Summit.
+                Invitations to club dinners, working sessions, and the annual Conference.
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-crimson" />
