@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Founders taking the space between things. Home of the annual Entrepreneurship Summit.",
+          "Founders taking the space between things. Home of the annual Entrepreneurship Conference.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

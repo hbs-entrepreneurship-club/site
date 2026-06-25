@@ -25,7 +25,7 @@ const ROLE_NOTES: Record<string, string> = {
   Officers:
     "Run the club end to end — strategy, membership, partnerships, and the calendar. Your first point of contact for anything club-related.",
   "Conference Chairs":
-    "Own the annual Entrepreneurship Summit: programming, speakers, sponsors, logistics, and the on-the-day experience.",
+    "Own the annual Entrepreneurship Conference: programming, speakers, sponsors, logistics, and the on-the-day experience.",
 };
 
 function People() {
@@ -34,7 +34,7 @@ function People() {
       <PageHeader
         eyebrow="People"
         title={<>The team behind the club.</>}
-        lede="A small student team runs the club each year, with a wider bench of members organizing events, programming the Summit, and keeping the door open for new founders. The 2026–2027 leadership is below."
+        lede="A small student team runs the club each year, with a wider bench of members organizing events, programming the Conference, and keeping the door open for new founders. The 2026–2027 leadership is below."
       />
 
       <section>
@@ -75,7 +75,7 @@ function People() {
           </div>
           <div className="lg:col-span-7 text-lg text-muted-foreground">
             <p>
-              We bring on members each term to help with the Summit, founder
+              We bring on members each term to help with the Conference, founder
               dinners, the resource library, and programming. If you want a role,
               tell us what you’d like to own and we’ll find a place for you.
             </p>

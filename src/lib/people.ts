@@ -32,7 +32,7 @@ export const leadership: { title: string; people: Person[] }[] = [
       {
         name: "Nathan Shiham Alam",
         role: "Conference Chair",
-        bio: "Harvard SEAS. Building the Entrepreneurship Summit from the ground up — programming, speakers, and the on-the-day experience.",
+        bio: "Harvard SEAS. Building the Entrepreneurship Conference from the ground up — programming, speakers, and the on-the-day experience.",
         linkedin: "https://www.linkedin.com/in/nathan-alam/",
         image: "/people/shiham.png",
       },

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A Harvard Business School club for founders building scrappy, cash-flow-positive businesses. Home of the annual Entrepreneurship Summit.",
+          "A Harvard Business School club for founders building scrappy, cash-flow-positive businesses. Home of the annual Entrepreneurship Conference.",
       },
       { property: "og:title", content: "HBS Entrepreneurship Club" },
       {
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 
 const STATS = [
   { value: "400+", label: "Founders & operators" },
-  { value: "Nov 22", label: "Summit 2026" },
+  { value: "Nov 22", label: "Conference 2026" },
   { value: "6", label: "Programming tracks" },
   { value: "100%", label: "Student-run" },
 ];
@@ -68,7 +68,7 @@ function Home() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-crimson px-7 py-3.5 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
               >
-                Summit · Nov 22, 2026 <span aria-hidden>→</span>
+                Conference · Nov 22, 2026 <span aria-hidden>→</span>
               </a>
               <Link
                 to="/about"
@@ -98,7 +98,7 @@ function Home() {
             </div>
             <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
               <div className="eyebrow mb-3">Next event</div>
-              <div className="font-serif text-xl">Entrepreneurship Summit</div>
+              <div className="font-serif text-xl">Entrepreneurship Conference</div>
               <div className="mt-2 font-mono text-sm text-crimson">
                 Sunday, November 22, 2026
               </div>

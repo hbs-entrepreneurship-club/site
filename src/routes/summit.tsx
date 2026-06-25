@@ -8,13 +8,13 @@ import {
 export const Route = createFileRoute("/summit")({
   head: () => ({
     meta: [
-      { title: "Entrepreneurship Summit 2026 — HBS Entrepreneurship Club" },
+      { title: "Entrepreneurship Conference 2026 — HBS Entrepreneurship Club" },
       {
         name: "description",
         content:
-          "The HBS Entrepreneurship Summit returns November 22, 2026. A full-day gathering for scrappy founders, operators, and investors.",
+          "The HBS Entrepreneurship Conference returns November 22, 2026. A full-day gathering for scrappy founders, operators, and investors.",
       },
-      { property: "og:title", content: "Entrepreneurship Summit 2026" },
+      { property: "og:title", content: "Entrepreneurship Conference 2026" },
       {
         property: "og:description",
         content:
@@ -48,7 +48,7 @@ const TRACKS = [
   },
   {
     title: "Workshops",
-    body: "Small-group sessions on hiring, contracts, pricing experiments, and shipping product the week of the Summit.",
+    body: "Small-group sessions on hiring, contracts, pricing experiments, and shipping product the week of the Conference.",
   },
 ];
 
@@ -87,7 +87,7 @@ const WHAT_TO_EXPECT = [
 
 const FAQ = [
   {
-    q: "Who is the Summit for?",
+    q: "Who is the Conference for?",
     a: "Current founders, aspiring founders, operators, and investors who care about building businesses the scrappy way. HBS students and the broader Harvard community are especially welcome.",
   },
   {
@@ -111,7 +111,7 @@ function Summit() {
         eyebrow="Flagship Event"
         title={
           <>
-            Entrepreneurship Summit
+            Entrepreneurship Conference
             <br />
             <span className="text-crimson">November 22, 2026</span>
           </>
@@ -134,7 +134,7 @@ function Summit() {
           </div>
           <div className="lg:col-span-7">
             <p className="text-lg text-muted-foreground md:text-xl">
-              The 2026 Summit returns for its second year. Expect a tight day of
+              The 2026 Conference returns for its second year. Expect a tight day of
               programming focused on founders building real, durable businesses —
               not a parade of pitch decks. Programming, speakers, and tickets are
               maintained on Eventbrite.
