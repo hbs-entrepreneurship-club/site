@@ -58,7 +58,7 @@ function People() {
                 {group.people.map((p) => (
                   <PersonCard key={p.name} person={p} />
                 ))}
-                <AddSlot />
+
               </div>
             </div>
           ))}
@@ -138,13 +138,3 @@ function PersonCard({ person }: { person: Person }) {
   return inner;
 }
 
-function AddSlot() {
-  return (
-    <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border p-5 text-center text-muted-foreground">
-      <div className="grid h-12 w-12 place-items-center rounded-full border border-dashed border-border text-xl">
-        +
-      </div>
-      <div className="font-mono text-[10px] uppercase tracking-widest">More to come</div>
-    </div>
-  );
-}
