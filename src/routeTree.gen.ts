@@ -8,134 +8,135 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as SummitRouteImport } from './routes/summit'
-import { Route as PeopleRouteImport } from './routes/people'
-import { Route as JoinRouteImport } from './routes/join'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as AboutRouteImport } from "./routes/about";
+import { Route as IndexRouteImport } from "./routes/index";
+import { Route as JoinRouteImport } from "./routes/join";
+import { Route as PeopleRouteImport } from "./routes/people";
+import { Route as SummitRouteImport } from "./routes/summit";
 
 const SummitRoute = SummitRouteImport.update({
-  id: '/summit',
-  path: '/summit',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/summit",
+	path: "/summit",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const PeopleRoute = PeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/people",
+	path: "/people",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const JoinRoute = JoinRouteImport.update({
-  id: '/join',
-  path: '/join',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/join",
+	path: "/join",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/about",
+	path: "/about",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/",
+	path: "/",
+	getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/join': typeof JoinRoute
-  '/people': typeof PeopleRoute
-  '/summit': typeof SummitRoute
+	"/": typeof IndexRoute;
+	"/about": typeof AboutRoute;
+	"/join": typeof JoinRoute;
+	"/people": typeof PeopleRoute;
+	"/summit": typeof SummitRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/join': typeof JoinRoute
-  '/people': typeof PeopleRoute
-  '/summit': typeof SummitRoute
+	"/": typeof IndexRoute;
+	"/about": typeof AboutRoute;
+	"/join": typeof JoinRoute;
+	"/people": typeof PeopleRoute;
+	"/summit": typeof SummitRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/join': typeof JoinRoute
-  '/people': typeof PeopleRoute
-  '/summit': typeof SummitRoute
+	__root__: typeof rootRouteImport;
+	"/": typeof IndexRoute;
+	"/about": typeof AboutRoute;
+	"/join": typeof JoinRoute;
+	"/people": typeof PeopleRoute;
+	"/summit": typeof SummitRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/join' | '/people' | '/summit'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/join' | '/people' | '/summit'
-  id: '__root__' | '/' | '/about' | '/join' | '/people' | '/summit'
-  fileRoutesById: FileRoutesById
+	fileRoutesByFullPath: FileRoutesByFullPath;
+	fullPaths: "/" | "/about" | "/join" | "/people" | "/summit";
+	fileRoutesByTo: FileRoutesByTo;
+	to: "/" | "/about" | "/join" | "/people" | "/summit";
+	id: "__root__" | "/" | "/about" | "/join" | "/people" | "/summit";
+	fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  JoinRoute: typeof JoinRoute
-  PeopleRoute: typeof PeopleRoute
-  SummitRoute: typeof SummitRoute
+	IndexRoute: typeof IndexRoute;
+	AboutRoute: typeof AboutRoute;
+	JoinRoute: typeof JoinRoute;
+	PeopleRoute: typeof PeopleRoute;
+	SummitRoute: typeof SummitRoute;
 }
 
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/summit': {
-      id: '/summit'
-      path: '/summit'
-      fullPath: '/summit'
-      preLoaderRoute: typeof SummitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people': {
-      id: '/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof PeopleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/join': {
-      id: '/join'
-      path: '/join'
-      fullPath: '/join'
-      preLoaderRoute: typeof JoinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-  }
+declare module "@tanstack/react-router" {
+	interface FileRoutesByPath {
+		"/summit": {
+			id: "/summit";
+			path: "/summit";
+			fullPath: "/summit";
+			preLoaderRoute: typeof SummitRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/people": {
+			id: "/people";
+			path: "/people";
+			fullPath: "/people";
+			preLoaderRoute: typeof PeopleRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/join": {
+			id: "/join";
+			path: "/join";
+			fullPath: "/join";
+			preLoaderRoute: typeof JoinRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/about": {
+			id: "/about";
+			path: "/about";
+			fullPath: "/about";
+			preLoaderRoute: typeof AboutRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/": {
+			id: "/";
+			path: "/";
+			fullPath: "/";
+			preLoaderRoute: typeof IndexRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+	}
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  JoinRoute: JoinRoute,
-  PeopleRoute: PeopleRoute,
-  SummitRoute: SummitRoute,
-}
+	IndexRoute: IndexRoute,
+	AboutRoute: AboutRoute,
+	JoinRoute: JoinRoute,
+	PeopleRoute: PeopleRoute,
+	SummitRoute: SummitRoute,
+};
 export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+	._addFileChildren(rootRouteChildren)
+	._addFileTypes<FileRouteTypes>();
 
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
+import type { getRouter } from "./router.tsx";
+import type { startInstance } from "./start.ts";
+
+declare module "@tanstack/react-start" {
+	interface Register {
+		ssr: true;
+		router: Awaited<ReturnType<typeof getRouter>>;
+		config: Awaited<ReturnType<typeof startInstance.getOptions>>;
+	}
 }
