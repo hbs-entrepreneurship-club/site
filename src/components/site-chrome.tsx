@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 export const EVENTBRITE_URL =
 	"https://www.eventbrite.com/e/entrepreneurship-summit-2026-tickets-1983422470000";
 export const EVENT_HUB_URL = "https://events.hbs.edu/event/entrepreneurship-summit-2026";
+export const CLUB_EMAIL = "team@hbs-entrepreneurship-club.org";
 
 export function Mark() {
 	return (
@@ -93,8 +94,16 @@ export function Footer() {
 						</div>
 					</div>
 				</div>
-				<div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-					© {new Date().getFullYear()} — Built by founders, for founders.
+				<div className="flex flex-col items-start gap-3 md:items-end">
+					<a
+						href={`mailto:${CLUB_EMAIL}`}
+						className="font-mono text-xs uppercase tracking-widest text-muted-foreground transition hover:text-foreground"
+					>
+						{CLUB_EMAIL}
+					</a>
+					<div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+						© {new Date().getFullYear()} — Built by founders, for founders.
+					</div>
 				</div>
 			</div>
 		</footer>

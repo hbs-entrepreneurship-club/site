@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/site-chrome";
+import { CLUB_EMAIL, PageHeader } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/join")({
 	head: () => ({
@@ -67,7 +67,7 @@ function Join() {
 								</li>
 							</ol>
 							<a
-								href="mailto:entrepreneurship@hbs.edu?subject=Joining%20the%20HBS%20Entrepreneurship%20Club"
+								href={`mailto:${CLUB_EMAIL}?subject=Joining%20the%20HBS%20Entrepreneurship%20Club`}
 								className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
 							>
 								Email to join →

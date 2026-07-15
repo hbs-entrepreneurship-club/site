@@ -39,65 +39,14 @@ const PRINCIPLES = [
 	},
 ];
 
-const ACTIVITIES = [
-	{
-		title: "Founder dinners",
-		body: "Small, recurring dinners where members share what they're working on, what's broken, and what they need help with this week.",
-	},
-	{
-		title: "Working sessions",
-		body: "Roll-up-your-sleeves blocks for cold outreach, pricing decisions, hiring debates, and shipping. Bring a laptop and a problem.",
-	},
-	{
-		title: "Operator office hours",
-		body: "Sessions with alumni and visiting operators who've actually built profitable businesses, focused on the practical, not the inspirational.",
-	},
-	{
-		title: "Annual Conference",
-		body: "Our flagship gathering each November — keynotes, panels, and workshops on building real businesses under real constraints.",
-	},
-	{
-		title: "Resource library",
-		body: "A shared, member-only repository of contracts, decks, cold-email templates, hiring rubrics, and vendor recommendations.",
-	},
-	{
-		title: "Warm intros, on tap",
-		body: "First customers, candidate referrals, design partners, mentors. The club's most useful asset is the address book it pools together.",
-	},
-];
-
-const STATS = [
-	{ value: "2025", label: "Founded" },
-	{ value: "400+", label: "Conference attendees" },
-	{ value: "6", label: "Programming tracks" },
-	{ value: "100%", label: "Student-run" },
-];
-
 function About() {
 	return (
 		<>
 			<PageHeader
 				eyebrow="About"
 				title={<>A club for the resourceful.</>}
-				lede="The Entrepreneurship Club gathers people working on businesses where scarcity is inherent. Our charge is twofold: celebrate the art of scrappy, cash-flow-positive building — and make every member meaningfully more likely to succeed by sharing tips, resources, and introductions across the cohort."
+				lede="The Entrepreneurship Club gathers people working on businesses where scarcity is inherent."
 			/>
-
-			<section className="bg-card/40">
-				<div className="mx-auto max-w-6xl px-6 py-16">
-					<div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-						{STATS.map((s) => (
-							<div key={s.label} className="text-center">
-								<div className="font-serif text-4xl font-bold text-crimson md:text-5xl">
-									{s.value}
-								</div>
-								<div className="mt-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-									{s.label}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
 
 			<section>
 				<div className="mx-auto max-w-6xl px-6 py-20">
@@ -132,25 +81,6 @@ function About() {
 							businesses are always the most expensive ones to start. The most interesting founders
 							we know solved a real problem, charged money for it on day one, and grew from there.
 						</p>
-					</div>
-				</div>
-			</section>
-
-			<section className="border-t border-border">
-				<div className="mx-auto max-w-6xl px-6 py-20">
-					<div className="mb-10 flex items-end justify-between gap-6">
-						<div>
-							<div className="eyebrow mb-3">What the club does</div>
-							<h2 className="font-serif text-3xl md:text-4xl">Practical, recurring, useful.</h2>
-						</div>
-					</div>
-					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-						{ACTIVITIES.map((a) => (
-							<div key={a.title} className="rounded-xl border border-border bg-card p-6">
-								<div className="font-serif text-xl">{a.title}</div>
-								<p className="mt-3 text-sm text-muted-foreground">{a.body}</p>
-							</div>
-						))}
 					</div>
 				</div>
 			</section>

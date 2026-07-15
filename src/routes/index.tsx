@@ -20,28 +20,6 @@ export const Route = createFileRoute("/")({
 	component: Home,
 });
 
-const STATS = [
-	{ value: "400+", label: "Founders & operators" },
-	{ value: "Nov 22", label: "Conference 2026" },
-	{ value: "6", label: "Programming tracks" },
-	{ value: "100%", label: "Student-run" },
-];
-
-const PILLARS = [
-	{
-		title: "Build under constraints",
-		body: "We celebrate businesses that pay for themselves from day one. Constraint sharpens the product and the operator.",
-	},
-	{
-		title: "Founders teach founders",
-		body: "Tactics, intros, playbooks. We aggregate what works so every member has better odds of success.",
-	},
-	{
-		title: "Revenue before runway",
-		body: "We are skeptical of the cult of large rounds. The most interesting founders solved a real problem and charged money on day one.",
-	},
-];
-
 function Home() {
 	return (
 		<>
@@ -115,43 +93,6 @@ function Home() {
 							</a>
 						</div>
 					</aside>
-				</div>
-			</section>
-
-			<section className="border-t border-border bg-card/40">
-				<div className="mx-auto max-w-6xl px-6 py-16">
-					<div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-						{STATS.map((s) => (
-							<div key={s.label} className="text-center">
-								<div className="font-serif text-4xl font-bold text-blue md:text-5xl">{s.value}</div>
-								<div className="mt-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-									{s.label}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<section className="border-t border-border">
-				<div className="mx-auto max-w-6xl px-6 py-20">
-					<div className="mb-10 flex items-end justify-between gap-6">
-						<div>
-							<div className="eyebrow mb-3">What we believe</div>
-							<h2 className="font-serif text-3xl md:text-4xl">
-								Three things we won't compromise on.
-							</h2>
-						</div>
-					</div>
-					<div className="grid gap-8 sm:grid-cols-3">
-						{PILLARS.map((p, i) => (
-							<div key={p.title} className="border-t border-blue/40 pt-5">
-								<div className="font-mono text-xs text-blue">0{i + 1}</div>
-								<div className="mt-2 font-serif text-2xl">{p.title}</div>
-								<p className="mt-3 text-sm text-muted-foreground">{p.body}</p>
-							</div>
-						))}
-					</div>
 				</div>
 			</section>
 

@@ -20,13 +20,6 @@ export const Route = createFileRoute("/people")({
 	component: People,
 });
 
-const ROLE_NOTES: Record<string, string> = {
-	Officers:
-		"Run the club end to end — strategy, membership, partnerships, and the calendar. Your first point of contact for anything club-related.",
-	"Conference Chairs":
-		"Own the annual Entrepreneurship Conference: programming, speakers, sponsors, logistics, and the on-the-day experience.",
-};
-
 function People() {
 	return (
 		<>
@@ -47,9 +40,6 @@ function People() {
 									</h2>
 									<div className="mt-3 h-px w-16 bg-crimson" />
 								</div>
-								{ROLE_NOTES[group.title] ? (
-									<p className="text-muted-foreground md:col-span-8">{ROLE_NOTES[group.title]}</p>
-								) : null}
 							</div>
 							<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 								{group.people.map((p) => (
