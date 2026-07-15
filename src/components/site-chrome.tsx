@@ -9,7 +9,7 @@ export function Mark() {
   return (
     <img
       src="/logo.jpeg"
-      alt="MIB Conference"
+      alt="HBS Entrepreneurship Club"
       className="h-9 w-9 rounded-md object-cover"
     />
   );
@@ -17,10 +17,10 @@ export function Mark() {
 
 const NAV = [
   { to: "/" as const, label: "Home" },
-  { to: "/summit" as const, label: "2026 Speakers" },
-  { to: "/people" as const, label: "Team" },
-  { to: "/about" as const, label: "Sponsors" },
-  { to: "/join" as const, label: "Archive" },
+  { to: "/about" as const, label: "About" },
+  { to: "/summit" as const, label: "Conference" },
+  { to: "/people" as const, label: "People" },
+  { to: "/join" as const, label: "Join" },
 ];
 
 export function Nav() {
@@ -31,10 +31,10 @@ export function Nav() {
           <Mark />
           <div className="leading-tight">
             <div className="font-serif text-base font-semibold">
-              MIB Conference
+              Entrepreneurship Club
             </div>
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              2026
+              Harvard Business School
             </div>
           </div>
         </Link>
@@ -43,13 +43,12 @@ export function Nav() {
             <Link
               key={item.to}
               to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
+              activeOptions={{ exact: true }}
               activeProps={{
-                className: "text-blue border-b-2 border-blue pb-0.5 -mb-0.5",
+                className:
+                  "text-crimson border-b-2 border-crimson pb-0.5 -mb-0.5",
               }}
-              inactiveProps={{
-                className: "text-foreground/80 hover:text-blue",
-              }}
+              inactiveProps={{ className: "text-foreground/80 hover:text-crimson" }}
             >
               {item.label}
             </Link>
@@ -59,9 +58,9 @@ export function Nav() {
           href={EVENTBRITE_URL}
           target="_blank"
           rel="noreferrer"
-          className="hidden rounded-full bg-blue px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-blue-deep md:inline-flex"
+          className="hidden rounded-full bg-crimson px-4 py-2 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep md:inline-flex"
         >
-          Join Waitlist →
+          Get Tickets →
         </a>
       </div>
       <div className="border-t border-border/60 md:hidden">
@@ -70,8 +69,8 @@ export function Nav() {
             <Link
               key={item.to}
               to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-blue font-medium" }}
+              activeOptions={{ exact: true }}
+              activeProps={{ className: "text-crimson font-medium" }}
               inactiveProps={{ className: "text-foreground/80" }}
             >
               {item.label}
@@ -90,14 +89,14 @@ export function Footer() {
         <div className="flex items-center gap-3">
           <Mark />
           <div className="text-sm">
-            <div className="font-serif">MIB Conference</div>
+            <div className="font-serif">HBS Entrepreneurship Club</div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               Harvard Business School · Boston, MA
             </div>
           </div>
         </div>
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          © {new Date().getFullYear()} — MIB Conference
+          © {new Date().getFullYear()} — Built by founders, for founders.
         </div>
       </div>
     </footer>
