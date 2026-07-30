@@ -27,11 +27,6 @@ function Home() {
 				<div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:py-32 lg:grid-cols-12">
 					<div className="lg:col-span-7">
 						<div className="eyebrow mb-5">Harvard Business School</div>
-						<h1 className="font-serif text-5xl leading-[1.02] tracking-tight md:text-7xl">
-							For founders who <em className="italic text-blue">take the space</em>
-							<br />
-							between things.
-						</h1>
 						<p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
 							A club for builders working on businesses where scarcity is inherent — scrappy,
 							resourceful, cash-flow-positive. We celebrate the craft of creating value out of very
@@ -103,7 +98,7 @@ function Home() {
 							Join the club
 						</div>
 						<h2 className="font-serif text-3xl md:text-4xl">
-							If you're shipping, charging, and figuring it out as you go — this is your room.
+							If you're pitching, selling, or just figuring it out as you go — this is your room.
 						</h2>
 					</div>
 					<Link
