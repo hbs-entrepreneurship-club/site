@@ -8,7 +8,7 @@ export const CLUB_EMAIL = "team@hbs-entrepreneurship-club.org";
 export function Mark() {
 	return (
 		<img
-			src="/logo.jpeg"
+			src="/logo.png"
 			alt="HBS Entrepreneurship Club"
 			className="h-9 w-9 rounded-md object-cover"
 		/>
