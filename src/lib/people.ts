@@ -13,6 +13,8 @@ export const leadership: { title: string; people: Person[] }[] = [
 			{
 				name: "Jeseo Park",
 				role: "Co-President",
+				linkedin: "https://www.linkedin.com/in/jeseo-park/",
+				image: "/people/jeseo.png",
 			},
 			{
 				name: "Shirley Lei",
@@ -34,18 +36,26 @@ export const leadership: { title: string; people: Person[] }[] = [
 			{
 				name: "Jon Cabarrus",
 				role: "Head of Founder & Alumni Relations",
+				linkedin: "https://www.linkedin.com/in/joncabarrus/",
+				image: "/people/jon.jpeg",
 			},
 			{
 				name: "Miles Francis",
 				role: "Head of Founder & Alumni Relations",
+				linkedin: "https://www.linkedin.com/in/milesnfrancis/",
+				image: "/people/miles.jpeg",
 			},
 			{
 				name: "Melody Na",
 				role: "Head of VC Relations",
+				linkedin: "https://www.linkedin.com/in/melody-na/",
+				image: "/people/melody.jpeg",
 			},
 			{
 				name: "Jubin Gorji",
 				role: "Head of VC Relations",
+				linkedin: "https://www.linkedin.com/in/jubingorji/",
+				image: "/people/jubin.jpeg",
 			},
 			{
 				name: "Shiham Alam",
