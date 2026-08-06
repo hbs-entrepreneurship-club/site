@@ -7,125 +7,70 @@ export const Route = createFileRoute("/about")({
 			{ title: "About — HBS Entrepreneurship Club" },
 			{
 				name: "description",
-				content:
-					"What the HBS Entrepreneurship Club stands for: scrappy, cash-flow-positive building, and founders helping founders.",
+				content: "The Entrepreneurship Club at Harvard Business School.",
 			},
 			{ property: "og:title", content: "About — HBS Entrepreneurship Club" },
 			{
 				property: "og:description",
-				content:
-					"A club for the resourceful. We celebrate scarcity, cash flow, and shared playbooks.",
+				content: "A community of founders at HBS.",
 			},
 		],
 	}),
 	component: About,
 });
 
-const PRINCIPLES = [
-	{
-		n: "01",
-		title: "Scarcity is the medium.",
-		body: "We build businesses without lavish funds. Constraint sharpens the product and the operator.",
-	},
-	{
-		n: "02",
-		title: "Cash flow before applause.",
-		body: "Revenue first, runway later. We optimize for businesses that pay for themselves quickly.",
-	},
-	{
-		n: "03",
-		title: "Founders teach founders.",
-		body: "Tactics, intros, playbooks. We aggregate what works so every member has better odds.",
-	},
-];
-
 function About() {
 	return (
 		<>
 			<PageHeader
 				eyebrow="About"
-				title={<>A club for the resourceful.</>}
-				lede="The Entrepreneurship Club gathers people working on businesses where scarcity is inherent."
+				title={
+					<>
+						A community of founders
+						<br />
+						at Harvard Business School.
+					</>
+				}
 			/>
 
 			<section>
 				<div className="mx-auto max-w-6xl px-6 py-20">
-					<div className="eyebrow mb-6">Principles</div>
-					<div className="grid gap-8 sm:grid-cols-3">
-						{PRINCIPLES.map((p) => (
-							<div key={p.n} className="border-t border-crimson/40 pt-4">
-								<div className="font-mono text-xs text-crimson">{p.n}</div>
-								<div className="mt-2 font-serif text-2xl">{p.title}</div>
-								<p className="mt-3 text-sm text-muted-foreground">{p.body}</p>
+					<div className="grid gap-px bg-border sm:grid-cols-3">
+						{[
+							{ n: "01", title: "Connect" },
+							{ n: "02", title: "Learn" },
+							{ n: "03", title: "Build" },
+						].map((item) => (
+							<div key={item.n} className="bg-background px-8 py-12">
+								<div className="font-mono text-xs font-medium text-crimson">{item.n}</div>
+								<div className="mt-3 font-serif text-3xl tracking-tight">{item.title}</div>
 							</div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section className="border-t border-border bg-card/40">
-				<div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-12">
-					<div className="lg:col-span-4">
-						<div className="eyebrow mb-3">Etymology</div>
-						<h2 className="font-serif text-3xl md:text-4xl">Why "entrepreneur."</h2>
-					</div>
-					<div className="lg:col-span-8 text-lg text-muted-foreground">
-						<p>
-							From the French <em>entre</em> (between) and <em>prendre</em> (to take): to take the
-							space between things. To find a gap that others walked past and persevere there long
-							enough to create something of value that didn't exist before.
-						</p>
-						<p className="mt-4">
-							That definition — not the venture-capital one — is the club we want to run. We are
-							skeptical of the cult of large rounds, prestige-by-deck, and the idea that the best
-							businesses are always the most expensive ones to start. The most interesting founders
-							we know solved a real problem, charged money for it on day one, and grew from there.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<section className="border-t border-border bg-card/40">
+			<section className="border-t border-border bg-card">
 				<div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-12">
 					<div className="lg:col-span-5">
-						<div className="eyebrow mb-3">Our story</div>
-						<h2 className="font-serif text-3xl md:text-4xl">Built by founders, for founders.</h2>
+						<div className="section-label">Etymology</div>
+						<div className="section-rule" />
 					</div>
-					<div className="lg:col-span-7 text-lg text-muted-foreground space-y-4">
-						<p>
-							The HBS Entrepreneurship Club was founded in 2025 by a group of students who noticed
-							something missing: a community for founders building real businesses — not just pitch
-							decks. We wanted a space where the conversations were about pricing, cold outreach,
-							and hiring your first employee, not about raising the biggest round.
-						</p>
-						<p>
-							In our first year, we launched the Entrepreneurship Summit, a full-day gathering that
-							brought together over 400 founders, operators, and investors. The Summit featured
-							keynotes from founders who built profitable businesses from scratch, panels on AI for
-							real businesses, and workshops on the mechanics of growth.
-						</p>
-						<p>
-							Today, the club runs year-round programming — founder dinners, working sessions,
-							operator office hours, and a shared resource library. We are a small team with a big
-							ambition: make every HBS founder meaningfully more likely to succeed.
+					<div className="lg:col-span-7">
+						<p className="font-serif text-3xl leading-snug tracking-tight md:text-4xl">
+							<span className="text-crimson">entre·prendre</span>
+							<span className="text-muted-foreground"> — to take what lies in between.</span>
 						</p>
 					</div>
 				</div>
 			</section>
 
-			<section className="border-t border-border bg-ink text-paper">
-				<div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-[1fr_auto] md:items-center">
-					<div>
-						<div className="eyebrow mb-3" style={{ color: "oklch(0.85 0.12 30)" }}>
-							Who it's for
-						</div>
-						<h2 className="font-serif text-3xl md:text-4xl">
-							If you're shipping, charging, and figuring it out as you go — this is your room.
-						</h2>
-					</div>
+			<section className="border-t border-border">
+				<div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 py-16 md:flex-row md:items-center">
+					<div className="font-serif text-2xl tracking-tight md:text-3xl">Want in?</div>
 					<Link
 						to="/join"
-						className="inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
+						className="inline-flex items-center gap-2 rounded bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
 					>
 						Join the club →
 					</Link>

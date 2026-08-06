@@ -8,12 +8,12 @@ export const Route = createFileRoute("/people")({
 			{ title: "People — HBS Entrepreneurship Club" },
 			{
 				name: "description",
-				content: "Meet the officers and conference chairs running the HBS Entrepreneurship Club.",
+				content: "Leadership of the HBS Entrepreneurship Club.",
 			},
 			{ property: "og:title", content: "People — HBS Entrepreneurship Club" },
 			{
 				property: "og:description",
-				content: "The student officers and chairs behind the club.",
+				content: "The team behind the club.",
 			},
 		],
 	}),
@@ -23,48 +23,23 @@ export const Route = createFileRoute("/people")({
 function People() {
 	return (
 		<>
-			<PageHeader
-				eyebrow="People"
-				title={<>The team behind the club.</>}
-				lede="A small student team runs the club each year, with a wider bench of members organizing events, programming the Conference, and keeping the door open for new founders. The 2026–2027 leadership is below."
-			/>
+			<PageHeader eyebrow="People" title={<>Leadership, 2026–2027.</>} />
 
 			<section>
-				<div className="mx-auto max-w-6xl px-6 py-20 space-y-16">
+				<div className="mx-auto max-w-6xl space-y-20 px-6 py-20">
 					{leadership.map((group) => (
 						<div key={group.title}>
-							<div className="mb-8 grid gap-6 md:grid-cols-12 md:items-end">
-								<div className="md:col-span-4">
-									<h2 className="font-mono text-xs uppercase tracking-[0.2em] text-crimson">
-										{group.title}
-									</h2>
-									<div className="mt-3 h-px w-16 bg-crimson" />
-								</div>
+							<div className="mb-10">
+								<div className="section-label">{group.title}</div>
+								<div className="section-rule" />
 							</div>
-							<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+							<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 								{group.people.map((p) => (
-									<PersonCard key={p.name} person={p} />
+									<PersonCard key={`${p.name}-${p.role}`} person={p} />
 								))}
 							</div>
 						</div>
 					))}
-				</div>
-			</section>
-
-			<section className="border-t border-border bg-card/40">
-				<div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-12">
-					<div className="lg:col-span-5">
-						<div className="eyebrow mb-3">Get involved</div>
-						<h2 className="font-serif text-3xl md:text-4xl">Want to help run the club?</h2>
-					</div>
-					<div className="lg:col-span-7 text-lg text-muted-foreground">
-						<p>
-							We bring on members each term to help with the Conference, founder dinners, the
-							resource library, and programming. If you want a role, tell us what you’d like to own
-							and we’ll find a place for you.
-						</p>
-						<p className="mt-4">Email the officers and mention which group you’d like to join.</p>
-					</div>
 				</div>
 			</section>
 		</>
@@ -73,27 +48,20 @@ function People() {
 
 function PersonCard({ person }: { person: Person }) {
 	const inner = (
-		<div className="group flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-6 transition hover:border-crimson/60 hover:shadow-md">
-			<div className="flex h-28 w-28 items-center justify-center rounded-full bg-crimson/10 font-serif text-4xl font-semibold text-crimson ring-2 ring-crimson/20">
+		<div className="group flex h-full flex-col gap-4 conf-card p-6 transition hover:border-crimson/50">
+			<div className="flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-secondary font-serif text-3xl font-semibold text-crimson ring-1 ring-border">
 				{person.image ? (
-					<img
-						src={person.image}
-						alt={person.name}
-						className="h-full w-full rounded-full object-cover"
-					/>
+					<img src={person.image} alt={person.name} className="h-full w-full object-cover" />
 				) : (
 					initials(person.name)
 				)}
 			</div>
 			<div>
 				<div className="font-serif text-xl leading-tight">{person.name}</div>
-				<div className="mt-1 font-mono text-xs uppercase tracking-widest text-crimson">
+				<div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-crimson">
 					{person.role}
 				</div>
 			</div>
-			{person.bio ? (
-				<p className="text-sm text-muted-foreground leading-relaxed">{person.bio}</p>
-			) : null}
 			{person.linkedin ? (
 				<div className="mt-auto flex items-center gap-1.5 text-xs font-medium text-crimson opacity-0 transition group-hover:opacity-100">
 					<svg
@@ -107,11 +75,7 @@ function PersonCard({ person }: { person: Person }) {
 					</svg>
 					LinkedIn →
 				</div>
-			) : (
-				<div className="mt-auto font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
-					LinkedIn — coming soon
-				</div>
-			)}
+			) : null}
 		</div>
 	);
 	if (person.linkedin) {

@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
+	--radius-sm: calc(var(--radius) - 2px);
+	--radius-md: var(--radius);
+	--radius-lg: calc(var(--radius) + 2px);
 	--radius-xl: calc(var(--radius) + 4px);
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
@@ -33,59 +33,66 @@
 	--color-crimson: var(--crimson);
 	--color-crimson-deep: var(--crimson-deep);
 	--color-rule: var(--rule);
-	--font-serif: "Fraunces", "Iowan Old Style", "Georgia", "Times New Roman", serif;
-	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	/* Display: classic conference-program presence */
+	--font-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
+	/* Body: clean institutional sans */
+	--font-sans: "Inter", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+	/* Meta/labels: restrained mono for program-style markers */
 	--font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
 :root {
-	--radius: 0.5rem;
-	/* Paper / ink palette inspired by HBS crimson on cream */
-	--paper: oklch(0.975 0.012 85); /* warm cream */
-	--ink: oklch(0.18 0.02 40); /* near-black ink */
-	--crimson: oklch(0.47 0.16 25); /* HBS crimson */
-	--crimson-deep: oklch(0.37 0.14 25);
-	--rule: oklch(0.85 0.02 60);
+	--radius: 0.375rem;
+
+	/* Warm cream paper · HBS crimson · charcoal ink */
+	--paper: #f8f5f0;
+	--ink: #1a1c20;
+	--crimson: #a51c30;
+	--crimson-deep: #8c1829;
+	--rule: #e4ddd3;
+	--muted-text: #4a4e57;
 
 	--background: var(--paper);
 	--foreground: var(--ink);
-	--card: oklch(0.99 0.008 85);
+	/* Slightly lighter cream for cards */
+	--card: #fbf9f5;
 	--card-foreground: var(--ink);
 	--popover: var(--card);
 	--popover-foreground: var(--ink);
 	--primary: var(--crimson);
-	--primary-foreground: oklch(0.98 0.01 85);
-	--secondary: oklch(0.93 0.018 70);
+	--primary-foreground: #faf7f2;
+	--secondary: #efe9e0;
 	--secondary-foreground: var(--ink);
-	--muted: oklch(0.94 0.015 70);
-	--muted-foreground: oklch(0.45 0.02 50);
-	--accent: oklch(0.92 0.04 60);
+	--muted: #f0ebe3;
+	--muted-foreground: var(--muted-text);
+	--accent: #efe9e0;
 	--accent-foreground: var(--ink);
-	--destructive: oklch(0.55 0.22 27);
-	--destructive-foreground: oklch(0.98 0.01 85);
+	--destructive: #a51c30;
+	--destructive-foreground: #faf7f2;
 	--border: var(--rule);
 	--input: var(--rule);
 	--ring: var(--crimson);
 }
 
+/* Prefer light institutional look; keep dark tokens minimal for system dialogs */
 .dark {
-	--background: oklch(0.18 0.02 40);
-	--foreground: oklch(0.97 0.012 85);
-	--card: oklch(0.22 0.02 40);
-	--card-foreground: oklch(0.97 0.012 85);
-	--popover: var(--card);
-	--popover-foreground: var(--card-foreground);
-	--primary: oklch(0.62 0.16 25);
-	--primary-foreground: oklch(0.18 0.02 40);
-	--secondary: oklch(0.27 0.02 40);
-	--secondary-foreground: oklch(0.97 0.012 85);
-	--muted: oklch(0.27 0.02 40);
-	--muted-foreground: oklch(0.72 0.02 60);
-	--accent: oklch(0.3 0.04 30);
-	--accent-foreground: oklch(0.97 0.012 85);
-	--border: oklch(1 0 0 / 12%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.62 0.16 25);
+	--background: #1a1c20;
+	--foreground: #f8f5f0;
+	--card: #22252b;
+	--card-foreground: #f8f5f0;
+	--popover: #22252b;
+	--popover-foreground: #f8f5f0;
+	--primary: #c43c4e;
+	--primary-foreground: #1a1c20;
+	--secondary: #2c3038;
+	--secondary-foreground: #f8f5f0;
+	--muted: #2c3038;
+	--muted-foreground: #a8acb4;
+	--accent: #2c3038;
+	--accent-foreground: #f8f5f0;
+	--border: rgb(255 255 255 / 12%);
+	--input: rgb(255 255 255 / 15%);
+	--ring: #c43c4e;
 }
 
 @layer base {
@@ -99,22 +106,60 @@
 		background-color: var(--color-background);
 		color: var(--color-foreground);
 		font-family: var(--font-sans);
-		font-feature-settings: "ss01", "cv11";
-		background-image: radial-gradient(circle at 1px 1px, oklch(0 0 0 / 0.04) 1px, transparent 0);
-		background-size: 22px 22px;
+		font-size: 1.0625rem;
+		line-height: 1.65;
+		-webkit-font-smoothing: antialiased;
 	}
 	h1,
 	h2,
 	h3 {
 		font-family: var(--font-serif);
-		letter-spacing: -0.01em;
+		letter-spacing: -0.015em;
+		line-height: 1.12;
+		color: var(--color-foreground);
+	}
+	p {
+		line-height: 1.7;
 	}
 }
 
+/* Small labels: crimson, tracked, institutional */
 @utility eyebrow {
-	font-family: var(--font-mono);
-	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	font-family: var(--font-sans);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	color: var(--color-crimson);
+}
+
+/* Program-style section header in crimson sans */
+@utility section-label {
+	font-family: var(--font-sans);
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-crimson);
+}
+
+/* Thin crimson rule under a section title */
+@utility section-rule {
+	margin-top: 0.75rem;
+	height: 2px;
+	width: 2.5rem;
+	background-color: var(--color-crimson);
+}
+
+/* Left crimson accent bar for major blocks */
+@utility accent-bar {
+	border-left: 3px solid var(--color-crimson);
+	padding-left: 1.25rem;
+}
+
+/* Light conference card — soft edge, no heavy shadow */
+@utility conf-card {
+	background-color: var(--color-card);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
 }

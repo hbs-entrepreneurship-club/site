@@ -8,12 +8,12 @@ export const Route = createFileRoute("/")({
 			{
 				name: "description",
 				content:
-					"A Harvard Business School club for founders building scrappy, cash-flow-positive businesses. Home of the annual Entrepreneurship Conference.",
+					"The Entrepreneurship Club at Harvard Business School. Home of the annual Entrepreneurship Conference.",
 			},
 			{ property: "og:title", content: "HBS Entrepreneurship Club" },
 			{
 				property: "og:description",
-				content: "Founders taking the space between things.",
+				content: "Founders at Harvard Business School.",
 			},
 		],
 	}),
@@ -23,90 +23,66 @@ export const Route = createFileRoute("/")({
 function Home() {
 	return (
 		<>
-			<section className="relative overflow-hidden">
-				<div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:py-32 lg:grid-cols-12">
-					<div className="lg:col-span-7">
-						<div className="eyebrow mb-5">Harvard Business School</div>
-						<p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-							A club for builders working on businesses where scarcity is inherent — scrappy,
-							resourceful, cash-flow-positive. We celebrate the craft of creating value out of very
-							little, and we trade what we learn so every member has better odds.
-						</p>
-						<div className="mt-10 flex flex-wrap items-center gap-4">
+			<section>
+				<div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+					<div className="accent-bar max-w-4xl">
+						<div className="eyebrow mb-8">Harvard Business School</div>
+						<h1 className="font-serif text-5xl font-medium tracking-tight md:text-6xl lg:text-[5rem] lg:leading-[1.05]">
+							Founders taking the space between things.
+						</h1>
+						<div className="mt-12 flex flex-wrap items-center gap-3">
 							<a
 								href={EVENTBRITE_URL}
 								target="_blank"
 								rel="noreferrer"
-								className="inline-flex items-center gap-2 rounded-full bg-blue px-7 py-3.5 text-sm font-medium text-primary-foreground transition hover:bg-blue-deep"
+								className="inline-flex items-center gap-2 rounded bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
 							>
-								Conference · Nov 22, 2026 <span aria-hidden>→</span>
+								Conference · Nov 22 <span aria-hidden>→</span>
 							</a>
 							<Link
-								to="/about"
-								className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-7 py-3.5 text-sm font-medium transition hover:bg-accent"
+								to="/join"
+								className="inline-flex items-center gap-2 rounded border border-border bg-card px-6 py-3 text-sm font-medium transition hover:border-crimson/40 hover:text-crimson"
 							>
-								Learn more about the club
+								Join the club
 							</Link>
 						</div>
 					</div>
-					<aside className="lg:col-span-5">
-						<div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-							<div className="eyebrow mb-3">Etymology</div>
-							<p className="font-serif text-2xl leading-snug">
-								<span className="text-blue">entre·prendre</span> — to{" "}
-								<span className="underline decoration-blue/40 decoration-2 underline-offset-4">
-									take
-								</span>{" "}
-								what lies{" "}
-								<span className="underline decoration-blue/40 decoration-2 underline-offset-4">
-									in between
-								</span>
-								.
-							</p>
-							<p className="mt-4 text-sm text-muted-foreground">
-								Find the gap. Persevere there. Build value that didn't exist before.
-							</p>
-						</div>
-						<div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
-							<div className="eyebrow mb-3">Next event</div>
-							<div className="font-serif text-xl">Entrepreneurship Conference</div>
-							<div className="mt-2 font-mono text-sm text-blue">Sunday, November 22, 2026</div>
-							<div className="mt-1 font-mono text-xs text-muted-foreground">
-								Harvard Business School · Boston, MA
-							</div>
-							<p className="mt-3 text-sm text-muted-foreground">
-								A full-day gathering for founders, operators, and investors who believe in building
-								the scrappy way.
-							</p>
-							<a
-								href={EVENTBRITE_URL}
-								target="_blank"
-								rel="noreferrer"
-								className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-blue hover:underline"
-							>
-								Get tickets <span aria-hidden>→</span>
-							</a>
-						</div>
-					</aside>
 				</div>
 			</section>
 
-			<section className="border-t border-border bg-ink text-paper">
-				<div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-[1fr_auto] md:items-center">
-					<div>
-						<div className="eyebrow mb-3" style={{ color: "oklch(0.85 0.14 85)" }}>
-							Join the club
+			<section className="border-t border-border">
+				<div className="mx-auto grid max-w-6xl gap-px bg-border md:grid-cols-3">
+					{[
+						{ n: "01", label: "Community" },
+						{ n: "02", label: "Conference" },
+						{ n: "03", label: "Network" },
+					].map((item) => (
+						<div key={item.n} className="bg-background px-8 py-14">
+							<div className="font-mono text-xs font-medium text-crimson">{item.n}</div>
+							<div className="mt-4 font-serif text-3xl tracking-tight">{item.label}</div>
 						</div>
-						<h2 className="font-serif text-3xl md:text-4xl">
-							If you're pitching, selling, or just figuring it out as you go — this is your room.
-						</h2>
+					))}
+				</div>
+			</section>
+
+			<section className="border-t border-border bg-card">
+				<div className="mx-auto flex max-w-6xl flex-col justify-between gap-10 px-6 py-16 md:flex-row md:items-end">
+					<div>
+						<div className="eyebrow mb-4">Next event</div>
+						<div className="font-serif text-3xl tracking-tight md:text-4xl">
+							Entrepreneurship Conference
+						</div>
+						<div className="mt-3 text-sm font-semibold text-crimson">November 22, 2026</div>
+						<div className="mt-1 text-sm text-muted-foreground">Harvard Business School</div>
 					</div>
-					<Link
-						to="/join"
-						className="inline-flex items-center justify-center gap-2 rounded-full bg-blue px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-blue-deep"
+					<a
+						href={EVENTBRITE_URL}
+						target="_blank"
+						rel="noreferrer"
+						className="inline-flex items-center gap-2 rounded bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
 					>
-						Join the club →
-					</Link>
+						Get tickets →
+					</a>
 				</div>
 			</section>
 		</>
