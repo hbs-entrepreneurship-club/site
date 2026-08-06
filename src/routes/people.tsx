@@ -23,7 +23,6 @@ export const Route = createFileRoute("/people")({
 function People() {
 	return (
 		<>
-			<PageHeader eyebrow="People" title={<>Leadership, 2026–2027.</>} />
 
 			<section>
 				<div className="mx-auto max-w-6xl space-y-20 px-6 py-20">
