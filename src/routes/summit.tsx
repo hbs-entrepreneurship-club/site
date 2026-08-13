@@ -4,28 +4,24 @@ import { EVENT_HUB_URL, EVENTBRITE_URL, PageHeader } from "@/components/site-chr
 export const Route = createFileRoute("/summit")({
 	head: () => ({
 		meta: [
-			{ title: "Entrepreneurship Conference 2026 — HBS Entrepreneurship Club" },
+			{ title: "Pitch Competition 2026 — HBS Entrepreneurship Club" },
 			{
 				name: "description",
 				content:
-					"2026 Entrepreneurship Conference · From Ideas to Institutions · November 22, 2026 · Klarman Hall, Harvard Business School.",
+					"2026 Pitch Competition · The Pitch Competition · November 22, 2026 · Klarman Hall, Harvard Business School.",
 			},
-			{ property: "og:title", content: "Entrepreneurship Conference 2026" },
+			{ property: "og:title", content: "Pitch Competition 2026" },
 			{
 				property: "og:description",
 				content:
-					"A full day for founders, operators, and investors. November 22, 2026 at Klarman Hall, Harvard Business School.",
+					"A full day pitch competition for founders, operators, and investors to build, refine, and present the next great company.",
 			},
 		],
 	}),
 	component: Summit,
 });
 
-const SPONSOR_EMAILS = [
-	"marshad@mba2027.hbs.edu",
-	"slam@mba2027.hbs.edu",
-	"cali@mba2027.hbs.edu",
-];
+const SPONSOR_EMAILS = ["marshad@mba2027.hbs.edu", "slam@mba2027.hbs.edu", "cali@mba2027.hbs.edu"];
 
 type Session = {
 	time: string;
@@ -46,176 +42,100 @@ type ProgramBlock = {
 const BLOCKS: ProgramBlock[] = [
 	{
 		n: "01",
-		name: "The Spark",
+		name: "The Formation",
 		arc: "Morning",
-		window: "Recognizing the Opportunity",
-		timeRange: "8:00 AM – 1:00 PM",
+		window: "Building the Teams",
+		timeRange: "8:00 AM – 10:00 AM",
 		sessions: [
 			{
 				time: "8:00 AM",
 				title: "Registration and Breakfast",
-				details: "Open networking. Sponsor tables active. Conference program distributed.",
+				details: "Open networking and breakfast.",
 			},
 			{
 				time: "9:00 AM",
-				title: "Keynote 1 — From Zero to One: The First Bold Decision",
-				details:
-					"A fireside conversation with a founder at the frontier of AI on the moment they committed to building, and what it took to turn a technical insight into a real company.",
+				title: "Opening Remarks & Rules",
+				details: "Introduction to the pitch competition rules.",
 			},
 			{
-				time: "10:05 AM",
-				title: "Seeing the Gap",
-				details:
-					"Pattern recognition, contrarian thinking, and what separates a real insight from a bad idea.",
-				track: "Ideation and Early Stage",
-			},
-			{
-				time: "10:05 AM",
-				title: "The VC Lens: What Gets Funded in 2026",
-				details:
-					"Leading investors on where capital is going, and what founders misunderstand about how VCs make decisions.",
-				track: "Fundraising and Capital",
-			},
-			{
-				time: "10:05 AM",
-				title: "Building with AI: The New Software Stack",
-				details:
-					"How AI-native tools are changing what founders can build, how fast, and with how few people.",
-				track: "Technology and AI",
-			},
-			{
-				time: "12:00 PM",
-				title: "Networking Lunch — Seated by Track",
-				details: "Attendees seated by interest track with structured conversation prompts.",
-			},
-			{
-				time: "12:00 PM",
-				title: "Co-founder Matching Workshop",
-				details: "Structured speed introductions for attendees seeking co-founders.",
+				time: "9:30 AM",
+				title: "Team Formation",
+				details: "Icebreakers and matching founders with operators.",
 			},
 		],
 	},
 	{
 		n: "02",
-		name: "The Build",
+		name: "The Preparation",
 		arc: "Late Morning",
-		window: "From Idea to Traction",
-		timeRange: "1:00 PM – 3:00 PM",
+		window: "Refining the Pitch",
+		timeRange: "10:00 AM – 1:00 PM",
 		sessions: [
 			{
-				time: "1:00 PM",
-				title: "Keynote 2 — The Pivot, the Near-Death, the Second Wind",
-				details:
-					"A candid fireside with a founder who has built through real adversity, and why the most important lessons rarely come from the highlight reel.",
+				time: "10:00 AM",
+				title: "Business Model Workshops",
+				details: "Mentor-led sessions on refining models.",
 			},
 			{
-				time: "2:00 PM",
-				title: "The First Hire, the First Sale, the First Dollar",
-				details:
-					"Founders on the unglamorous realities of getting to product-market fit, and what nearly killed the company before they figured it out.",
-				track: "Operations and GTM",
+				time: "11:30 AM",
+				title: "Pitch Practice",
+				details: "Dry runs with early feedback from mentors.",
 			},
-			{
-				time: "2:00 PM",
-				title: "Deep Tech and Hard Problems",
-				details:
-					"Founders in robotics, climate technology, biotech, and defense on building capital-intensive, long-horizon companies.",
-				track: "Deep Tech and Climate",
-			},
-			{
-				time: "2:00 PM",
-				title: "Leadership at Scale: What Changes When You Grow",
-				details:
-					"The hardest leadership transitions, from 10 to 100 people, and how the best leaders navigated the shift.",
-				track: "Leadership and Culture",
-			},
-			{
-				time: "2:50 PM",
-				title: "Afternoon Break and Sponsor Expo",
-				details: "Open networking. Sponsor tables and recruiting booths active.",
-			},
+			{ time: "12:30 PM", title: "Working Lunch", details: "Finalizing the deck and rehearsing." },
 		],
 	},
 	{
 		n: "03",
-		name: "The Scale",
+		name: "The Pitch",
 		arc: "Afternoon",
-		window: "Building for Growth",
-		timeRange: "3:10 PM – 5:00 PM",
+		window: "Presenting to the Judges",
+		timeRange: "1:00 PM – 4:00 PM",
 		sessions: [
 			{
-				time: "3:10 PM",
-				title: "Go-to-Market: Cracking the Revenue Code",
-				details:
-					"When to build a sales team and when to stay product-led, and what founders who cracked GTM would change.",
-				track: "Sales and GTM",
+				time: "1:00 PM",
+				title: "Preliminary Pitches",
+				details: "Teams pitch to rotating judging panels in breakout rooms.",
 			},
 			{
-				time: "3:10 PM",
-				title: "Consumer Brands: Building Companies People Love",
-				details:
-					"How the best consumer founders built brands with real staying power in a crowded market.",
-				track: "Consumer and Brand",
-			},
-			{
-				time: "3:10 PM",
-				title: "Entrepreneurship for Impact: Beyond Profit",
-				details:
-					"Founders and investors pursuing mission alongside scale, and where the models actually work.",
-				track: "Social Impact",
-			},
-			{
-				time: "4:00 PM",
-				title: "Legal and Financial Foundations",
-				details:
-					"Cap tables, SAFEs, board composition, and the decisions that are easy to get wrong early and very hard to undo later.",
-				track: "Finance and Legal",
-			},
-			{
-				time: "4:00 PM",
-				title: "Launch After HBS: Your First Company",
-				details:
-					"HBS alumni who left consulting, finance, or Big Tech to build, and what the network actually gave them.",
-				track: "HBS Community",
+				time: "3:00 PM",
+				title: "Finalist Selection",
+				details: "Judges deliberate to select the top 5 teams.",
 			},
 		],
 	},
 	{
 		n: "04",
-		name: "The Institution",
+		name: "The Reveal",
 		arc: "Late Afternoon",
-		window: "From Company to Institution",
-		timeRange: "5:00 PM – 7:30 PM",
+		window: "Awards and Closing",
+		timeRange: "4:00 PM – 6:00 PM",
 		sessions: [
 			{
+				time: "4:00 PM",
+				title: "Final Presentations",
+				details: "Top 5 teams present on the main stage.",
+			},
+			{
 				time: "5:00 PM",
-				title: "What Endures: Building Companies That Last a Generation",
-				details:
-					"Founders and investors on what separates companies with real staying power from those that fade: culture, governance, and mission clarity.",
-				track: "Institution Building",
+				title: "Awards Ceremony",
+				details: "Winners announced, prizes distributed.",
 			},
 			{
-				time: "5:50 PM",
-				title: "Closing Keynote — From Ideas to Institutions",
-				details:
-					"A founder or CEO who has built something that endures, on what they would tell this room about the decade ahead. Not a victory lap. A challenge.",
-			},
-			{
-				time: "6:45 PM",
+				time: "5:30 PM",
 				title: "Closing Reception",
-				details: "Open networking with speakers, sponsors, and all attendees. Drinks and light bites.",
+				details: "Networking with judges and participants.",
 			},
 		],
 	},
 ];
 
 const STATS = [
-	{ n: "04", label: "Program Blocks" },
-	{ n: "15", label: "Panels and Keynotes" },
-	{ n: "01", label: "Full Day of Building" },
+	{ n: "04", label: "Competition Phases" },
+	{ n: "10+", label: "Mentors & Judges" },
+	{ n: "01", label: "Winning Pitch" },
 ];
 
-const ARC = ["The Spark", "The Build", "The Scale", "The Institution"];
+const ARC = ["Formation", "Preparation", "The Pitch", "The Reveal"];
 
 function Summit() {
 	return (
@@ -224,12 +144,12 @@ function Summit() {
 				eyebrow="Flagship Event · 2026"
 				title={
 					<>
-						Entrepreneurship Conference
+						Pitch Competition
 						<br />
 						<span className="text-crimson">November 22, 2026</span>
 					</>
 				}
-				lede="A full day gathering for founders, operators, and investors who believe the best companies are still being built."
+				lede="A full day pitch competition for founders, operators, and investors to build, refine, and present the next great company."
 			/>
 
 			{/* Event facts + CTA */}
@@ -248,12 +168,12 @@ function Summit() {
 							<div className="section-label">The 2026 Theme</div>
 							<div className="section-rule" />
 							<h2 className="mt-6 font-serif text-3xl tracking-tight md:text-4xl">
-								From Ideas to Institutions
+								The Pitch Competition
 							</h2>
 							<p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-								Through keynote conversations and panel discussions, the day traces the full arc of
-								company building—from the earliest spark of an idea to the discipline it takes to
-								build something that endures.
+								Through rapid team formation, intensive mentor-led workshops, and high-stakes
+								presentations, the day focuses entirely on building and pitching the next big idea
+								to top investors.
 							</p>
 							<div className="mt-10 flex flex-wrap gap-3">
 								<a
@@ -303,7 +223,9 @@ function Summit() {
 					{STATS.map((item) => (
 						<div key={item.label} className="bg-background px-8 py-12 md:py-14">
 							<div className="font-mono text-xs font-medium text-crimson">{item.n}</div>
-							<div className="mt-3 font-serif text-2xl tracking-tight md:text-3xl">{item.label}</div>
+							<div className="mt-3 font-serif text-2xl tracking-tight md:text-3xl">
+								{item.label}
+							</div>
 						</div>
 					))}
 				</div>
@@ -380,7 +302,9 @@ function Summit() {
 						<div className="lg:col-span-5">
 							<div className="section-label">Sponsorship</div>
 							<div className="section-rule" />
-							<h2 className="mt-6 font-serif text-3xl tracking-tight">Partner with the conference</h2>
+							<h2 className="mt-6 font-serif text-3xl tracking-tight">
+								Partner with the conference
+							</h2>
 						</div>
 						<div className="lg:col-span-7">
 							<p className="text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -400,6 +324,64 @@ function Summit() {
 							</ul>
 						</div>
 					</div>
+					<div className="mt-12 overflow-x-auto">
+						<table className="w-full text-left text-sm border-collapse">
+							<thead>
+								<tr className="border-b border-border bg-muted/50">
+									<th className="p-4 font-semibold">Benefits</th>
+									<th className="p-4 font-semibold text-center">
+										Advocate
+										<br />
+										<span className="font-mono font-normal text-muted-foreground">$10,000</span>
+									</th>
+									<th className="p-4 font-semibold text-center">
+										Catalyst
+										<br />
+										<span className="font-mono font-normal text-muted-foreground">$15,000</span>
+									</th>
+									<th className="p-4 font-semibold text-center text-crimson">
+										Vanguard
+										<br />
+										<span className="font-mono font-normal">$20,000</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody className="divide-y divide-border">
+								{[
+									{ benefit: "Company branding on marketing material", tiers: [true, true, true] },
+									{ benefit: "Recognition during opening remarks", tiers: [true, true, true] },
+									{ benefit: "Complimentary conference tickets", tiers: [true, true, true] },
+									{ benefit: "Logo feature during interim sessions", tiers: [true, true, true] },
+									{ benefit: "Full day booth in main auditorium", tiers: [true, true, true] },
+									{ benefit: "Dedicated social media post", tiers: [false, true, true] },
+									{ benefit: "Access to delegate resume rolodex", tiers: [false, true, true] },
+									{ benefit: "Logo on attendee name tag", tiers: [false, false, true] },
+									{
+										benefit: "Dedicated acknowledgement during breakout",
+										tiers: [false, false, true],
+									},
+									{
+										benefit: "Seat on judging panel / Propose pitch theme",
+										tiers: [false, false, true],
+									},
+								].map((row) => (
+									<tr key={row.benefit} className="hover:bg-muted/30">
+										<td className="p-4">{row.benefit}</td>
+										{row.tiers.map((hasBenefit, j) => (
+											// biome-ignore lint/suspicious/noArrayIndexKey: Static array data
+											<td key={`${row.benefit}-${j}`} className="p-4 text-center">
+												{hasBenefit ? (
+													<span className="text-crimson font-bold">✓</span>
+												) : (
+													<span className="text-muted-foreground/30">—</span>
+												)}
+											</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</section>
 
@@ -407,7 +389,9 @@ function Summit() {
 			<section className="border-t border-border">
 				<div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 py-16 md:flex-row md:items-center">
 					<div>
-						<div className="font-serif text-2xl tracking-tight md:text-3xl">Join us on November 22</div>
+						<div className="font-serif text-2xl tracking-tight md:text-3xl">
+							Join us on November 22
+						</div>
 						<p className="mt-2 text-sm text-muted-foreground">
 							Klarman Hall · Harvard Business School · Boston, MA
 						</p>
