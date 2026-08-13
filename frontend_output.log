@@ -6,3 +6,8 @@ The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths r
   ➜  Local:   http://localhost:8080/
   ➜  Network: http://192.168.0.2:8080/
 8:28:59 PM [vite] (ssr) connected.
+8:40:37 PM [vite] (client) page reload src/routeTree.gen.ts
+8:40:37 PM [vite] (ssr) page reload src/routeTree.gen.ts
+8:40:37 PM [vite] (ssr) program reload
+8:40:38 PM [vite] (client) page reload src/routeTree.gen.ts
+8:40:38 PM [vite] (ssr) page reload src/routeTree.gen.ts
