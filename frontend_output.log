@@ -15,3 +15,6 @@ The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths r
 8:50:48 PM [vite] (ssr) page reload src/routeTree.gen.ts
 8:50:49 PM [vite] (client) page reload src/routeTree.gen.ts
 8:50:49 PM [vite] (ssr) page reload src/routeTree.gen.ts
+8:58:15 PM [vite] vite.config.ts changed, restarting server...
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+8:58:15 PM [vite] server restarted.
