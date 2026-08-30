@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ConferenceRouteImport } from './routes/conference'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as SummitRouteImport } from './routes/summit'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConferenceRoute = ConferenceRouteImport.update({
+  id: '/conference',
+  path: '/conference',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JoinRoute = JoinRouteImport.update({
@@ -44,6 +50,7 @@ const SummitRoute = SummitRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
   '/summit': typeof SummitRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
   '/summit': typeof SummitRoute
@@ -59,21 +67,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
   '/summit': typeof SummitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/join' | '/people' | '/summit'
+  fullPaths: '/' | '/about' | '/conference' | '/join' | '/people' | '/summit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/join' | '/people' | '/summit'
-  id: '__root__' | '/' | '/about' | '/join' | '/people' | '/summit'
+  to: '/' | '/about' | '/conference' | '/join' | '/people' | '/summit'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/conference'
+    | '/join'
+    | '/people'
+    | '/summit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ConferenceRoute: typeof ConferenceRoute
   JoinRoute: typeof JoinRoute
   PeopleRoute: typeof PeopleRoute
   SummitRoute: typeof SummitRoute
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conference': {
+      id: '/conference'
+      path: '/conference'
+      fullPath: '/conference'
+      preLoaderRoute: typeof ConferenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/join': {
@@ -122,6 +146,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ConferenceRoute: ConferenceRoute,
   JoinRoute: JoinRoute,
   PeopleRoute: PeopleRoute,
   SummitRoute: SummitRoute,
