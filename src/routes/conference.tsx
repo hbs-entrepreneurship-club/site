@@ -1,15 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SessionCard } from "@/components/session-card";
 import { EVENT_HUB_URL, EVENTBRITE_URL, PageHeader } from "@/components/site-chrome";
-import {
-	BUILDING_LABEL,
-	type Building,
-	CONFIRMED_SPEAKERS,
-	type Session,
-	SLOTS,
-	type Slot,
-} from "@/lib/conference-itinerary";
-import { cn } from "@/lib/utils";
+import { CONFIRMED_SPEAKERS } from "@/lib/conference-itinerary";
 
 export const Route = createFileRoute("/conference")({
 	head: () => ({
@@ -80,12 +71,6 @@ function Conference() {
 								>
 									Get tickets →
 								</a>
-								<a
-									href="#itinerary"
-									className="inline-flex items-center gap-2 rounded border border-border bg-card px-6 py-3 text-sm font-medium transition hover:border-crimson/40 hover:text-crimson"
-								>
-									View itinerary
-								</a>
 							</div>
 						</div>
 					</div>
@@ -146,19 +131,6 @@ function Conference() {
 						))}
 					</ul>
 				</div>
-			</section>
-
-			<section className="border-t border-border" id="itinerary">
-				<div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
-					<div className="section-label">Itinerary</div>
-					<div className="section-rule" />
-				</div>
-
-				<ol className="border-t border-border">
-					{SLOTS.map((slot) => (
-						<TimelineSlot key={`${slot.start}-${slot.end}`} slot={slot} />
-					))}
-				</ol>
 			</section>
 
 			<section className="border-t border-border bg-card">
@@ -223,110 +195,6 @@ function Conference() {
 				</div>
 			</section>
 		</>
-	);
-}
-
-function TimelineSlot({ slot }: { slot: Slot }) {
-	const aldrich = slot.sessions.filter((session) => session.building === "aldrich");
-	const batten = slot.sessions.filter((session) => session.building === "batten");
-	const klarman = slot.sessions.filter((session) => session.building === "klarman");
-	const parallel = slot.sessions.length > 1;
-
-	return (
-		<li className="border-b border-border last:border-b-0">
-			<div className="mx-auto grid max-w-6xl gap-6 px-6 py-10 md:grid-cols-[9.5rem_1fr] md:gap-10 md:py-12">
-				<div className="md:pt-1">
-					<div className="font-mono text-sm font-medium tabular-nums text-crimson">
-						{slot.start}
-					</div>
-					<div className="mt-0.5 font-mono text-xs tabular-nums text-muted-foreground">
-						{slot.end}
-					</div>
-					{slot.label ? (
-						<div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-							{slot.label}
-						</div>
-					) : null}
-				</div>
-
-				<div className="min-w-0">
-					{parallel ? (
-						<div className="space-y-6">
-							{klarman.length > 0 ? (
-								<BuildingRow
-									building="klarman"
-									sessions={klarman}
-									start={slot.start}
-									end={slot.end}
-								/>
-							) : null}
-							{aldrich.length > 0 ? (
-								<BuildingRow
-									building="aldrich"
-									sessions={aldrich}
-									start={slot.start}
-									end={slot.end}
-								/>
-							) : null}
-							{batten.length > 0 ? (
-								<BuildingRow
-									building="batten"
-									sessions={batten}
-									start={slot.start}
-									end={slot.end}
-								/>
-							) : null}
-						</div>
-					) : slot.sessions[0] ? (
-						<SessionCard
-							session={slot.sessions[0]}
-							start={slot.start}
-							end={slot.end}
-							featured={slot.kind === "plenary"}
-						/>
-					) : null}
-				</div>
-			</div>
-		</li>
-	);
-}
-
-function BuildingRow({
-	building,
-	sessions,
-	start,
-	end,
-}: {
-	building: Building;
-	sessions: Session[];
-	start: string;
-	end: string;
-}) {
-	return (
-		<div>
-			<div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-				{BUILDING_LABEL[building]}
-			</div>
-			<div
-				className={cn(
-					"grid gap-3",
-					sessions.length === 1
-						? "grid-cols-1"
-						: sessions.length === 2
-							? "grid-cols-1 sm:grid-cols-2"
-							: "grid-cols-2 xl:grid-cols-4",
-				)}
-			>
-				{sessions.map((session) => (
-					<SessionCard
-						key={`${session.building}-${session.room}-${session.title}`}
-						session={session}
-						start={start}
-						end={end}
-					/>
-				))}
-			</div>
-		</div>
 	);
 }
 
