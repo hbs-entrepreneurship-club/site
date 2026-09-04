@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/site-chrome";
 import { initials, leadership, type Person } from "@/lib/people";
 
 export const Route = createFileRoute("/people")({
@@ -22,26 +21,23 @@ export const Route = createFileRoute("/people")({
 
 function People() {
 	return (
-		<>
-
-			<section>
-				<div className="mx-auto max-w-6xl space-y-20 px-6 py-20">
-					{leadership.map((group) => (
-						<div key={group.title}>
-							<div className="mb-10">
-								<div className="section-label">{group.title}</div>
-								<div className="section-rule" />
-							</div>
-							<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-								{group.people.map((p) => (
-									<PersonCard key={`${p.name}-${p.role}`} person={p} />
-								))}
-							</div>
+		<section>
+			<div className="mx-auto max-w-6xl space-y-20 px-6 py-20">
+				{leadership.map((group) => (
+					<div key={group.title}>
+						<div className="mb-10">
+							<div className="section-label">{group.title}</div>
+							<div className="section-rule" />
 						</div>
-					))}
-				</div>
-			</section>
-		</>
+						<div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+							{group.people.map((p) => (
+								<PersonCard key={`${p.name}-${p.role}`} person={p} />
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
 	);
 }
 
