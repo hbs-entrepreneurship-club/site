@@ -2,8 +2,9 @@
 
 import { toPng } from "html-to-image";
 import { Download } from "lucide-react";
-import { type RefObject, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import { type Speaker, speakerImageStyle } from "@/lib/speakers";
+import { cn } from "@/lib/utils";
 
 type Format = "preview" | "instagram" | "linkedin";
 
@@ -28,10 +29,14 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 
 	const nameSize = isLinkedIn ? undefined : isPreview ? "text-xl sm:text-2xl" : undefined;
 	const roleSize = isPreview ? "mt-1 text-[10px] sm:text-xs" : undefined;
-	const logoHeight = isPreview ? "h-6 w-auto sm:h-7" : undefined;
-	const titleSize = isPreview ? "text-sm sm:text-base whitespace-nowrap" : undefined;
-	const subSize = isPreview ? "mt-0.5 text-[10px] sm:text-xs whitespace-nowrap" : undefined;
-	const dateSize = isPreview ? "mt-1 text-[9px] tracking-[0.18em] sm:text-[10px]" : undefined;
+	const logoHeight = isPreview ? "h-6 w-auto max-w-[40%] sm:h-7" : undefined;
+	const titleSize = isPreview ? "text-[11px] leading-none sm:text-sm md:text-base" : undefined;
+	const subSize = isPreview
+		? "mt-0.5 text-[9px] leading-none sm:text-[10px] md:text-xs"
+		: undefined;
+	const dateSize = isPreview
+		? "mt-1 text-[8px] tracking-wide sm:text-[10px] sm:tracking-[0.18em]"
+		: undefined;
 
 	const identity = (
 		<div>
@@ -60,7 +65,12 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 
 	const brand = (
 		<div
-			className="flex items-start justify-between gap-4 border-t border-foreground/15"
+			className={cn(
+				"border-t border-foreground/15",
+				isPreview
+					? "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
+					: "flex items-start justify-between gap-4",
+			)}
 			style={
 				isLinkedIn
 					? { paddingTop: 19.2, marginTop: 24 }
@@ -72,7 +82,7 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 			<img
 				src="/eclub-logo-light.png"
 				alt="HBS Entrepreneurship Club"
-				className={logoHeight}
+				className={cn("shrink-0", logoHeight)}
 				style={
 					isLinkedIn
 						? { height: 66, width: "auto" }
@@ -81,9 +91,9 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 							: undefined
 				}
 			/>
-			<div className="min-w-0 text-right">
+			<div className={cn("min-w-0", isPreview ? "text-left sm:text-right" : "text-right")}>
 				<p
-					className={`font-display uppercase leading-none text-foreground ${titleSize ?? ""}`}
+					className={cn("font-display uppercase leading-none text-foreground", titleSize)}
 					style={
 						isLinkedIn
 							? { fontSize: 33.6 }
@@ -95,7 +105,10 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 					From Ideas to Institutions
 				</p>
 				<p
-					className={`font-display uppercase leading-none tracking-wide text-foreground/80 ${subSize ?? ""}`}
+					className={cn(
+						"font-display uppercase leading-none tracking-wide text-foreground/80",
+						subSize,
+					)}
 					style={
 						isLinkedIn
 							? { fontSize: 22.8, marginTop: 5.4 }
@@ -107,7 +120,7 @@ function CardChrome({ speaker, format }: { speaker: Speaker; format: Format }) {
 					Entrepreneurship Conference
 				</p>
 				<p
-					className={`font-bold uppercase tracking-[0.25em] text-lime ${dateSize ?? ""}`}
+					className={cn("font-bold uppercase text-lime", dateSize)}
 					style={
 						isLinkedIn
 							? { fontSize: 15.6, marginTop: 7.2, whiteSpace: "nowrap" }
@@ -177,7 +190,10 @@ function PromoFrame({
 	return (
 		<div
 			ref={frameRef}
-			className="relative overflow-hidden rounded-lg border-2 border-periwinkle/70 bg-card p-2 shadow-[0_0_0_1px_var(--border)]"
+			className={cn(
+				"relative overflow-hidden rounded-lg border-2 border-periwinkle/70 bg-card p-2 shadow-[0_0_0_1px_var(--border)]",
+				!size && "w-full max-w-full",
+			)}
 			style={
 				size
 					? {
@@ -203,6 +219,17 @@ function PromoFrame({
 
 async function downloadNode(node: HTMLDivElement, filename: string) {
 	await document.fonts.ready;
+	const images = [...node.querySelectorAll("img")];
+	await Promise.all(
+		images.map((img) =>
+			img.complete
+				? Promise.resolve()
+				: new Promise<void>((resolve) => {
+						img.addEventListener("load", () => resolve(), { once: true });
+						img.addEventListener("error", () => resolve(), { once: true });
+					}),
+		),
+	);
 	const dataUrl = await toPng(node, {
 		cacheBust: true,
 		pixelRatio: 1,
@@ -215,52 +242,63 @@ async function downloadNode(node: HTMLDivElement, filename: string) {
 }
 
 export function SpeakerPromo({ speaker }: { speaker: Speaker }) {
-	const instagramRef = useRef<HTMLDivElement>(null);
-	const linkedinRef = useRef<HTMLDivElement>(null);
+	const exportRef = useRef<HTMLDivElement>(null);
 	const [busy, setBusy] = useState<"instagram" | "linkedin" | null>(null);
 
-	async function save(format: "instagram" | "linkedin") {
-		const node = format === "instagram" ? instagramRef.current : linkedinRef.current;
+	useEffect(() => {
+		if (!busy) return;
+		const node = exportRef.current;
 		if (!node) return;
-		setBusy(format);
-		try {
-			await downloadNode(node, `${speaker.slug}-${format}.png`);
-		} finally {
-			setBusy(null);
-		}
-	}
+		let cancelled = false;
+		void (async () => {
+			try {
+				await downloadNode(node, `${speaker.slug}-${busy}.png`);
+			} finally {
+				if (!cancelled) setBusy(null);
+			}
+		})();
+		return () => {
+			cancelled = true;
+		};
+	}, [busy, speaker.slug]);
 
 	return (
-		<div className="mx-auto w-full max-w-[380px] md:mx-0 md:ml-auto lg:max-w-[400px]">
+		<div className="speaker-copy relative mx-auto w-full min-w-0 md:mx-0 md:ml-auto md:max-w-[380px] lg:max-w-[400px]">
 			<PromoFrame speaker={speaker} format="preview" />
-			<div className="mt-4 flex flex-wrap gap-3">
+			<div className="mt-4 flex min-w-0 flex-col gap-3">
 				<button
 					type="button"
 					disabled={busy !== null}
-					onClick={() => void save("instagram")}
-					className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition hover:border-lime disabled:opacity-60"
+					onClick={() => setBusy("instagram")}
+					className="flex w-full min-w-0 items-center justify-center gap-2 rounded-md border border-border bg-card px-3 py-2.5 text-center text-[11px] font-bold tracking-wide text-balance uppercase transition hover:border-lime disabled:opacity-60 sm:text-xs sm:tracking-wider"
 				>
-					<Download className="h-4 w-4" />
-					Download image for Instagram post
+					<Download className="h-4 w-4 shrink-0" />
+					<span className="min-w-0">Download Instagram image</span>
 				</button>
 				<button
 					type="button"
 					disabled={busy !== null}
-					onClick={() => void save("linkedin")}
-					className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition hover:border-lime disabled:opacity-60"
+					onClick={() => setBusy("linkedin")}
+					className="flex w-full min-w-0 items-center justify-center gap-2 rounded-md border border-border bg-card px-3 py-2.5 text-center text-[11px] font-bold tracking-wide text-balance uppercase transition hover:border-lime disabled:opacity-60 sm:text-xs sm:tracking-wider"
 				>
-					<Download className="h-4 w-4" />
-					Download image for LinkedIn post
+					<Download className="h-4 w-4 shrink-0" />
+					<span className="min-w-0">Download LinkedIn image</span>
 				</button>
 			</div>
-			<div
-				aria-hidden="true"
-				className="pointer-events-none fixed top-0 left-0 -z-50"
-				style={{ transform: "translateX(-200vw)" }}
-			>
-				<PromoFrame speaker={speaker} format="instagram" frameRef={instagramRef} />
-				<PromoFrame speaker={speaker} format="linkedin" frameRef={linkedinRef} />
-			</div>
+			{busy ? (
+				<div
+					aria-hidden="true"
+					className="pointer-events-none fixed top-0 left-0 overflow-hidden"
+					style={{
+						width: 1,
+						height: 1,
+						contain: "strict",
+						clipPath: "inset(50%)",
+					}}
+				>
+					<PromoFrame speaker={speaker} format={busy} frameRef={exportRef} />
+				</div>
+			) : null}
 		</div>
 	);
 }

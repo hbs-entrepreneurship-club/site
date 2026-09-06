@@ -95,12 +95,15 @@
 	}
 	html {
 		scroll-behavior: smooth;
+		overflow-x: hidden;
 	}
 	body {
 		background-color: var(--color-background);
 		color: var(--color-foreground);
 		font-family: var(--font-sans);
 		line-height: 1.5;
+		max-width: 100%;
+		overflow-x: hidden;
 		-webkit-font-smoothing: antialiased;
 	}
 	p {
@@ -134,4 +137,26 @@
 
 @utility pass-glow-hover {
 	box-shadow: 0 0 40px -4px var(--lime);
+}
+
+.speaker-copy {
+	max-width: 20.5rem;
+}
+
+@media (min-width: 400px) {
+	.speaker-copy {
+		max-width: 22.5rem;
+	}
+}
+
+@media (min-width: 640px) {
+	.speaker-copy {
+		max-width: 32rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.speaker-copy {
+		max-width: 36rem;
+	}
 }

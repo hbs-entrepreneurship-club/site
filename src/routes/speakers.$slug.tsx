@@ -31,37 +31,39 @@ function SpeakerPage() {
 	const { speaker } = Route.useLoaderData();
 
 	return (
-		<section className="relative isolate overflow-hidden">
+		<section className="relative isolate min-w-0">
 			<div className="absolute inset-0 -z-10 glow-bg opacity-60" />
-			<div className="mx-auto max-w-7xl px-5 pt-16 pb-24 md:px-8">
+			<div className="mx-auto w-full max-w-7xl px-5 pt-16 pb-24 box-border md:px-8">
 				<Link
 					to="/speakers"
 					className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.25em] text-muted-foreground uppercase transition hover:text-lime"
 				>
-					<ArrowLeft className="h-4 w-4" /> All speakers
+					<ArrowLeft className="h-4 w-4 shrink-0" /> All speakers
 				</Link>
-				<div className="mt-10 grid gap-12 md:grid-cols-[1.1fr_1fr] md:items-start">
-					<div>
+				<div className="mt-10 grid min-w-0 grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-start">
+					<div className="min-w-0 max-w-full">
 						<p className="text-xs font-bold tracking-[0.3em] text-lime uppercase">Speaker</p>
-						<h1 className="mt-4 font-serif text-6xl leading-[0.95] text-periwinkle sm:text-7xl lg:text-8xl">
+						<h1 className="mt-4 font-serif text-4xl leading-[1.05] break-words text-periwinkle sm:text-6xl lg:text-8xl lg:leading-[0.95]">
 							{speaker.name}
 						</h1>
-						<p className="mt-6 font-serif text-3xl leading-tight sm:text-4xl">
+						<p className="mt-6 font-serif text-2xl leading-tight sm:text-3xl lg:text-4xl">
 							{speaker.role}
 							<br />
 							of {speaker.company}
 						</p>
 						{speaker.logo ? (
-							<div className="mt-6 flex h-10 items-center">
+							<div className="mt-6 flex h-10 max-w-full items-center">
 								<img
 									src={speaker.logo}
 									alt={speaker.company}
-									className="h-8 w-auto object-contain object-left"
+									className="h-8 w-auto max-w-full object-contain object-left"
 								/>
 							</div>
 						) : null}
-						<div className="mt-10 max-w-xl border-t border-border pt-8">
-							<p className="font-serif text-lg leading-relaxed text-foreground/85">{speaker.bio}</p>
+						<div className="mt-10 w-full min-w-0 max-w-xl border-t border-border pt-8">
+							<p className="speaker-copy w-full font-serif text-base leading-relaxed text-foreground/85">
+								{speaker.bio}
+							</p>
 							<a
 								href={speaker.sourceUrl}
 								target="_blank"
