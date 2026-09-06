@@ -9,31 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SummitRouteImport } from './routes/summit'
-import { Route as PeopleRouteImport } from './routes/people'
-import { Route as JoinRouteImport } from './routes/join'
-import { Route as ConferenceRouteImport } from './routes/conference'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ConferenceRouteImport } from './routes/conference'
+import { Route as JoinRouteImport } from './routes/join'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
+import { Route as SummitRouteImport } from './routes/summit'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as SpeakersIndexRouteImport } from './routes/speakers.index'
+import { Route as SpeakersSlugRouteImport } from './routes/speakers.$slug'
 
-const SummitRoute = SummitRouteImport.update({
-  id: '/summit',
-  path: '/summit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeopleRoute = PeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JoinRoute = JoinRouteImport.update({
-  id: '/join',
-  path: '/join',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConferenceRoute = ConferenceRouteImport.update({
-  id: '/conference',
-  path: '/conference',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -41,10 +31,50 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const ConferenceRoute = ConferenceRouteImport.update({
+  id: '/conference',
+  path: '/conference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakersRoute = SpeakersRouteImport.update({
+  id: '/speakers',
+  path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SummitRoute = SummitRouteImport.update({
+  id: '/summit',
+  path: '/summit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakersIndexRoute = SpeakersIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => SpeakersRoute,
+} as any)
+const SpeakersSlugRoute = SpeakersSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SpeakersRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -53,7 +83,12 @@ export interface FileRoutesByFullPath {
   '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
+  '/speakers': typeof SpeakersRouteWithChildren
+  '/sponsors': typeof SponsorsRoute
   '/summit': typeof SummitRoute
+  '/team': typeof TeamRoute
+  '/speakers/$slug': typeof SpeakersSlugRoute
+  '/speakers/': typeof SpeakersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +96,11 @@ export interface FileRoutesByTo {
   '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
+  '/sponsors': typeof SponsorsRoute
   '/summit': typeof SummitRoute
+  '/team': typeof TeamRoute
+  '/speakers/$slug': typeof SpeakersSlugRoute
+  '/speakers': typeof SpeakersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,13 +109,39 @@ export interface FileRoutesById {
   '/conference': typeof ConferenceRoute
   '/join': typeof JoinRoute
   '/people': typeof PeopleRoute
+  '/speakers': typeof SpeakersRouteWithChildren
+  '/sponsors': typeof SponsorsRoute
   '/summit': typeof SummitRoute
+  '/team': typeof TeamRoute
+  '/speakers/$slug': typeof SpeakersSlugRoute
+  '/speakers/': typeof SpeakersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/conference' | '/join' | '/people' | '/summit'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/conference'
+    | '/join'
+    | '/people'
+    | '/speakers'
+    | '/sponsors'
+    | '/summit'
+    | '/team'
+    | '/speakers/$slug'
+    | '/speakers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/conference' | '/join' | '/people' | '/summit'
+  to:
+    | '/'
+    | '/about'
+    | '/conference'
+    | '/join'
+    | '/people'
+    | '/sponsors'
+    | '/summit'
+    | '/team'
+    | '/speakers/$slug'
+    | '/speakers'
   id:
     | '__root__'
     | '/'
@@ -84,7 +149,12 @@ export interface FileRouteTypes {
     | '/conference'
     | '/join'
     | '/people'
+    | '/speakers'
+    | '/sponsors'
     | '/summit'
+    | '/team'
+    | '/speakers/$slug'
+    | '/speakers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,37 +163,19 @@ export interface RootRouteChildren {
   ConferenceRoute: typeof ConferenceRoute
   JoinRoute: typeof JoinRoute
   PeopleRoute: typeof PeopleRoute
+  SpeakersRoute: typeof SpeakersRouteWithChildren
+  SponsorsRoute: typeof SponsorsRoute
   SummitRoute: typeof SummitRoute
+  TeamRoute: typeof TeamRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/summit': {
-      id: '/summit'
-      path: '/summit'
-      fullPath: '/summit'
-      preLoaderRoute: typeof SummitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people': {
-      id: '/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof PeopleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/join': {
-      id: '/join'
-      path: '/join'
-      fullPath: '/join'
-      preLoaderRoute: typeof JoinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/conference': {
-      id: '/conference'
-      path: '/conference'
-      fullPath: '/conference'
-      preLoaderRoute: typeof ConferenceRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -133,15 +185,85 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/conference': {
+      id: '/conference'
+      path: '/conference'
+      fullPath: '/conference'
+      preLoaderRoute: typeof ConferenceRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speakers': {
+      id: '/speakers'
+      path: '/speakers'
+      fullPath: '/speakers'
+      preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/summit': {
+      id: '/summit'
+      path: '/summit'
+      fullPath: '/summit'
+      preLoaderRoute: typeof SummitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speakers/': {
+      id: '/speakers/'
+      path: '/'
+      fullPath: '/speakers/'
+      preLoaderRoute: typeof SpeakersIndexRouteImport
+      parentRoute: typeof SpeakersRoute
+    }
+    '/speakers/$slug': {
+      id: '/speakers/$slug'
+      path: '/$slug'
+      fullPath: '/speakers/$slug'
+      preLoaderRoute: typeof SpeakersSlugRouteImport
+      parentRoute: typeof SpeakersRoute
     }
   }
 }
+
+interface SpeakersRouteChildren {
+  SpeakersSlugRoute: typeof SpeakersSlugRoute
+  SpeakersIndexRoute: typeof SpeakersIndexRoute
+}
+
+const SpeakersRouteChildren: SpeakersRouteChildren = {
+  SpeakersSlugRoute: SpeakersSlugRoute,
+  SpeakersIndexRoute: SpeakersIndexRoute,
+}
+
+const SpeakersRouteWithChildren = SpeakersRoute._addFileChildren(
+  SpeakersRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -149,7 +271,10 @@ const rootRouteChildren: RootRouteChildren = {
   ConferenceRoute: ConferenceRoute,
   JoinRoute: JoinRoute,
   PeopleRoute: PeopleRoute,
+  SpeakersRoute: SpeakersRouteWithChildren,
+  SponsorsRoute: SponsorsRoute,
   SummitRoute: SummitRoute,
+  TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

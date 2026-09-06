@@ -28,13 +28,13 @@ function About() {
 					<>
 						A community of founders
 						<br />
-						at Harvard Business School.
+						at Harvard Business School
 					</>
 				}
 			/>
 
 			<section>
-				<div className="mx-auto max-w-6xl px-6 py-20">
+				<div className="mx-auto max-w-7xl px-5 py-20 md:px-8">
 					<div className="grid gap-px bg-border sm:grid-cols-3">
 						{[
 							{ n: "01", title: "Connect" },
@@ -42,8 +42,12 @@ function About() {
 							{ n: "03", title: "Build" },
 						].map((item) => (
 							<div key={item.n} className="bg-background px-8 py-12">
-								<div className="font-mono text-xs font-medium text-crimson">{item.n}</div>
-								<div className="mt-3 font-serif text-3xl tracking-tight">{item.title}</div>
+								<div className="text-xs font-bold tracking-[0.3em] text-lime uppercase">
+									{item.n}
+								</div>
+								<div className="mt-3 font-display text-3xl tracking-tight uppercase">
+									{item.title}
+								</div>
 							</div>
 						))}
 					</div>
@@ -51,14 +55,13 @@ function About() {
 			</section>
 
 			<section className="border-t border-border bg-card">
-				<div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-12">
+				<div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-12 md:px-8">
 					<div className="lg:col-span-5">
-						<div className="section-label">Etymology</div>
-						<div className="section-rule" />
+						<div className="text-xs font-bold tracking-[0.3em] text-lime uppercase">Etymology</div>
 					</div>
 					<div className="lg:col-span-7">
 						<p className="font-serif text-3xl leading-snug tracking-tight md:text-4xl">
-							<span className="text-crimson">entre·prendre</span>
+							<span className="text-lime">entre·prendre</span>
 							<span className="text-muted-foreground"> — to take what lies in between.</span>
 						</p>
 					</div>
@@ -66,11 +69,11 @@ function About() {
 			</section>
 
 			<section className="border-t border-border">
-				<div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 py-16 md:flex-row md:items-center">
-					<div className="font-serif text-2xl tracking-tight md:text-3xl">Want in?</div>
+				<div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-5 py-16 md:flex-row md:items-center md:px-8">
+					<div className="font-display text-3xl tracking-tight uppercase md:text-4xl">Want in?</div>
 					<Link
 						to="/join"
-						className="inline-flex items-center gap-2 rounded bg-crimson px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-crimson-deep"
+						className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-extrabold tracking-wider text-primary-foreground uppercase shadow-[0_0_30px_-6px_var(--lime)] transition hover:brightness-105"
 					>
 						Join the club →
 					</Link>

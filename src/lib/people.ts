@@ -8,19 +8,36 @@ export type Person = {
 
 export const leadership: { title: string; people: Person[] }[] = [
 	{
-		title: "Officers",
+		title: "Conference Co-Chairs",
 		people: [
 			{
-				name: "Jeseo Park",
-				role: "Co-President",
-				linkedin: "https://www.linkedin.com/in/jeseo-park/",
-				image: "/people/jeseo.png",
+				name: "Maha Arshad",
+				role: "Entrepreneurship Conference Co-Chair",
+				linkedin: "https://www.linkedin.com/in/maha-arshad-9b7658187/",
+				image: "/people/maha.jpeg",
 			},
+			{
+				name: "Cara Li",
+				role: "Entrepreneurship Conference Co-Chair",
+				linkedin: "https://www.linkedin.com/in/carali7769/",
+				image: "/people/cara.jpeg",
+			},
+		],
+	},
+	{
+		title: "Officers",
+		people: [
 			{
 				name: "Shirley Lei",
 				role: "Co-President",
 				linkedin: "https://www.linkedin.com/in/shirley-lei/",
 				image: "/people/shirley.jpeg",
+			},
+			{
+				name: "Jeseo Park",
+				role: "Co-President",
+				linkedin: "https://www.linkedin.com/in/jeseo-park/",
+				image: "/people/jeseo.png",
 			},
 			{
 				name: "Maha Arshad",
@@ -34,16 +51,16 @@ export const leadership: { title: string; people: Person[] }[] = [
 		title: "Committee Leadership",
 		people: [
 			{
-				name: "Jon Cabarrus",
-				role: "Head of Founder & Alumni Relations",
-				linkedin: "https://www.linkedin.com/in/joncabarrus/",
-				image: "/people/jon.jpeg",
-			},
-			{
 				name: "Miles Francis",
 				role: "Head of Founder & Alumni Relations",
 				linkedin: "https://www.linkedin.com/in/milesnfrancis/",
 				image: "/people/miles.jpeg",
+			},
+			{
+				name: "Jon Cabarrus",
+				role: "Head of Founder & Alumni Relations",
+				linkedin: "https://www.linkedin.com/in/joncabarrus/",
+				image: "/people/jon.jpeg",
 			},
 			{
 				name: "Melody Na",
@@ -56,24 +73,6 @@ export const leadership: { title: string; people: Person[] }[] = [
 				role: "Head of VC Relations",
 				linkedin: "https://www.linkedin.com/in/jubingorji/",
 				image: "/people/jubin.jpeg",
-			},
-			{
-				name: "Shiham Alam",
-				role: "Entrepreneurship Conference Co-Chair",
-				linkedin: "https://www.linkedin.com/in/nathan-alam/",
-				image: "/people/shiham.png",
-			},
-			{
-				name: "Cara Li",
-				role: "Entrepreneurship Conference Co-Chair",
-				linkedin: "https://www.linkedin.com/in/carali7769/",
-				image: "/people/cara.jpeg",
-			},
-			{
-				name: "Maha Arshad",
-				role: "Entrepreneurship Conference Co-Chair",
-				linkedin: "https://www.linkedin.com/in/maha-arshad-9b7658187/",
-				image: "/people/maha.jpeg",
 			},
 		],
 	},

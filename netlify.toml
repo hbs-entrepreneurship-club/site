@@ -4,6 +4,18 @@
 
 [[redirects]]
   from = "/summit"
-  to = "/conference"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/conference"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/people"
+  to = "/team"
   status = 301
   force = true
