@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SpeakerGrid } from "@/components/speaker-card";
 import { PageHeader } from "@/components/site-chrome";
+import { SpeakerGrid } from "@/components/speaker-card";
 
 export const Route = createFileRoute("/speakers/")({
 	head: () => ({
